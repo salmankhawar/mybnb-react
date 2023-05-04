@@ -9,30 +9,31 @@ import { useState, useEffect } from 'react'
 // Function
 
 // Data
-let houses = [
-  {
-    image:
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
-    title: 'Luxury Villa in Chewang',
-    price: 350,
-    location: 'Koh Samui',
-    rooms: 4,
-    reviews: 3,
-    score: 1,
-  },
-  {
-    image:
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295027/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2002/house_02_01.png',
-    title: 'Private Villa Lotus 1',
-    price: 150,
-    location: 'Koh Phangan',
-    rooms: 3,
-    reviews: 1,
-    score: -1,
-  },
-]
+
 // Main
 export default function House() {
+  let houses = [
+    {
+      image:
+        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
+      title: 'Luxury Villa in Chewang',
+      price: 350,
+      location: 'Koh Samui',
+      rooms: 4,
+      reviews: 3,
+      score: 1,
+    },
+    {
+      image:
+        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295027/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2002/house_02_01.png',
+      title: 'Private Villa Lotus 1',
+      price: 150,
+      location: 'Koh Phangan',
+      rooms: 3,
+      reviews: 1,
+      score: -1,
+    },
+  ]
   function sendForm(e) {
     e.preventDefault()
     let form = {

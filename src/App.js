@@ -8,7 +8,7 @@ import SignUp from './pages/SignUp'
 import Houses from './pages/Houses'
 
 function App() {
-  return <Login />
+  return <Profile />
 }
 
 export default App
