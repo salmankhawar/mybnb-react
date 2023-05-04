@@ -8,13 +8,7 @@ import SignUp from './pages/SignUp'
 import Houses from './pages/Houses'
 
 function App() {
-  return (
-    <div>
-      <label className="input-group-text">
-        <i className="fa-sharp fa-solid fa-house"></i>
-      </label>
-    </div>
-  )
+  return <Login />
 }
 
 export default App

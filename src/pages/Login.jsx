@@ -1,4 +1,12 @@
 export default function Login() {
+  function sendForm(e) {
+    e.preventDefault()
+    let form = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+    }
+    console.log(form)
+  }
   return (
     <>
       <img src="images/thailand.jpg" className="img-fluid" alt="..." />
@@ -9,14 +17,12 @@ export default function Login() {
       >
         <img src="images/logo-airbnb.png" className="card-img-top" alt="..." />
         <div className="card-body">
-          <form>
+          <form onSubmit={(e) => sendForm(e)}>
             <label>Email</label>
-            <input type="text" />
+            <input name="email" type="text" />
             <label>Password</label>
-            <input type="password" />
-            <button type="button" className="btn btn-success">
-              Login
-            </button>
+            <input name="password" type="password" />
+            <button className="btn btn-success">Login</button>
           </form>
         </div>
       </div>

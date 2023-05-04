@@ -1,4 +1,13 @@
 export default function SignUp() {
+  function sendForm(e) {
+    e.preventDefault()
+    let form = {
+      fullName: e.target.fullName.value,
+      profilePicture: e.target.profilePicture.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+    }
+  }
   return (
     <>
       <img src="images/thailand.jpg" className="img-fluid" alt="..." />
@@ -9,18 +18,16 @@ export default function SignUp() {
       >
         <img src="images/logo-airbnb.png" className="card-img-top" alt="..." />
         <div className="card-body">
-          <form>
+          <form onSubmit={(e) => sendForm(e)}>
             <label>Your Full Name</label>
-            <input type="text" />
+            <input name="fullName" type="text" />
             <label>Profile Picture</label>
-            <input type="text" placeholder="http://.." />
+            <input name="profilePicture" type="text" placeholder="http://.." />
             <label>Email</label>
-            <input type="text" />
+            <input name="email" type="text" />
             <label>Password</label>
-            <input type="password" />
-            <button type="button" className="btn btn-success">
-              Sign Up
-            </button>
+            <input name="password" type="password" />
+            <button className="btn btn-success">Sign Up</button>
             <span>
               Already have an account? <a href="login.html">Login</a>{' '}
             </span>
