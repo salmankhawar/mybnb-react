@@ -4,11 +4,16 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import Houses from './pages/Houses'
+import House from './pages/House'
+import HouseCreate from './pages/HouseCreate'
+import Login from './pages/Login'
+import Profile from './pages/Profile'
+import SignUp from './pages/SignUp'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <Houses />
+    <SignUp />
   </React.StrictMode>
 )
 
