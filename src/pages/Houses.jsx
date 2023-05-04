@@ -1,39 +1,8 @@
+import HouseThumbnail from '../components/HouseThumbnail'
+import Nav from '../components/Nav'
 import { useState, useEffect } from 'react'
 
-// States
-
-// const [searchForm, setSearchForm] = useState({})
-
-// useEffect(() => {}, [searchForm])
-
-// Function
-
-// Data
-
-// Main
 export default function House() {
-  let houses = [
-    {
-      image:
-        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
-      title: 'Luxury Villa in Chewang',
-      price: 350,
-      location: 'Koh Samui',
-      rooms: 4,
-      reviews: 3,
-      score: 1,
-    },
-    {
-      image:
-        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295027/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2002/house_02_01.png',
-      title: 'Private Villa Lotus 1',
-      price: 150,
-      location: 'Koh Phangan',
-      rooms: 3,
-      reviews: 1,
-      score: -1,
-    },
-  ]
   function sendForm(e) {
     e.preventDefault()
     let form = {
@@ -47,26 +16,7 @@ export default function House() {
 
   return (
     <>
-      <div className="container">
-        <div className="row row-cols-3">
-          <div className="col text-left">
-            <img src="/images/logo-airbnb.png" />
-          </div>
-          <div className="col"></div>
-          <div className="col text-right">
-            <button type="button" className="btn btn-outline-dark">
-              Tony Russo
-            </button>
-            <button type="button" className="btn btn-outline-dark">
-              Logout
-            </button>
-          </div>
-          {/* <div>
-          <button type="button" class="btn btn-outline-dark"><a href="login.html>Login</a></button>
-          <button type="button" class="btn btn-outline-dark"><a href="signup.html">Signup!</a></button
-        </div> */}
-        </div>
-      </div>
+      <Nav />
       <div className="bg-light p-3">
         <div className="container">
           <form onSubmit={(e) => sendForm(e)} className="input-group row">
@@ -143,42 +93,7 @@ export default function House() {
           </form>
         </div>
       </div>
-      <div className="container">
-        <div className="row row-cols-4">
-          {houses.map((element, i) => (
-            <div className="col" key={i}>
-              <div className="card">
-                <img src={element.image} className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <span className="card-text">
-                    <i className="fa-sharp fa-solid fa-location-dot" />
-                    {element.location} - {element.rooms} Rooms
-                  </span>
-                  <a href="abc.com" className="stretched-link">
-                    <h5 className="card-title">{element.title}</h5>
-                  </a>
-                  <span className="card-text">
-                    {element.score == 1 && (
-                      <i
-                        className="fa-sharp fa-solid fa-thumbs-up"
-                        style={{ color: 'darkgreen' }}
-                      />
-                    )}{' '}
-                    {element.score == -1 && (
-                      <i
-                        className="fa-sharp fa-solid fa-thumbs-down"
-                        style={{ color: '#dc2909' }}
-                      />
-                    )}
-                    {element.reviews} Reviews
-                  </span>
-                  <span className="card-text">${element.price}/night</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <HouseThumbnail />
     </>
   )
 }

@@ -6,9 +6,10 @@ import Login from './pages/Login'
 import Profile from './pages/Profile'
 import SignUp from './pages/SignUp'
 import Houses from './pages/Houses'
+import Reviews from './components/Reviews'
 
 function App() {
-  return <Profile />
+  return <Houses />
 }
 
 export default App
