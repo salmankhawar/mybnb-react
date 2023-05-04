@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export default function Login() {
   function sendForm(e) {
     e.preventDefault()
@@ -24,6 +25,9 @@ export default function Login() {
             <input name="password" type="password" />
             <button className="btn btn-success">Login</button>
           </form>
+          <span>
+            New to Airbnb <Link to="/signup">Sign Up</Link>
+          </span>
         </div>
       </div>
     </>

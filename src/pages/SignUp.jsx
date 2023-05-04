@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export default function SignUp() {
   function sendForm(e) {
     e.preventDefault()
@@ -29,7 +30,7 @@ export default function SignUp() {
             <input name="password" type="password" />
             <button className="btn btn-success">Sign Up</button>
             <span>
-              Already have an account? <a href="login.html">Login</a>{' '}
+              Already have an account? <Link to="/login">Login</Link>{' '}
             </span>
           </form>
         </div>

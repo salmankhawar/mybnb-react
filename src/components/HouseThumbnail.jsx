@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export default function HouseThumbnail() {
   let houses = [
     {
@@ -33,9 +34,10 @@ export default function HouseThumbnail() {
                   <i className="fa-sharp fa-solid fa-location-dot" />
                   {element.location} - {element.rooms} Rooms
                 </span>
-                <a href="abc.com" className="stretched-link">
+                <Link to="/house">
                   <h5 className="card-title">{element.title}</h5>
-                </a>
+                </Link>
+
                 <span className="card-text">
                   {element.score == 1 && (
                     <i

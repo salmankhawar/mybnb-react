@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export default function Listings() {
   let houses = [
     {
@@ -26,8 +27,8 @@ export default function Listings() {
   return (
     <div className="col cols-9">
       <h5>My Listings</h5>
-      <button type="button" className="btn btn-success">
-        List a House
+      <button className="btn btn-success">
+        <Link to="/housecreate">List a House</Link>
       </button>
       <div>
         {houses.length > 0 ? (
@@ -53,8 +54,12 @@ export default function Listings() {
                         Last updated {element.updated} ago
                       </small>
                     </p>
-                    <button className="btn btn-outline-secondary">Edit</button>
-                    <button className="btn btn-outline-success">View</button>
+                    <button className="btn btn-outline-secondary">
+                      <Link to="/edithouse">Edit</Link>
+                    </button>
+                    <button className="btn btn-outline-success">
+                      <Link to="/house">View</Link>
+                    </button>
                   </div>
                 </div>
               </div>
