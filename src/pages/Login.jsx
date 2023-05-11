@@ -1,12 +1,33 @@
-import { Link } from 'react-router-dom'
+import  axios  from 'axios'
+axios.defaults.withCredentials = true
+import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+
+
+
 export default function Login() {
-  function sendForm(e) {
+  const navigate = useNavigate()
+  const [login, setLogin] = useState(false)
+  const [errorMessage, setError] = useState('')
+  async function sendForm(e) {
+    
     e.preventDefault()
-    let form = {
+    let loginUser = {
       email: e.target.email.value,
       password: e.target.password.value,
     }
-    console.log(form)
+    try {
+      if (loginUser.email && loginUser.password) {
+        let post = await axios.post('http://localhost:4000/login', loginUser)  
+        post.data == e.target.email.value ? navigate('/') : setLogin(true) 
+        console.log(post.data)
+        setError(post.data)
+        
+      } 
+      
+    } catch(err) {
+      console.log(err)
+    }
   }
   return (
     <>
@@ -14,7 +35,7 @@ export default function Login() {
       <div className="" />
       <div
         className="card position-absolute top-50 start-50 translate-middle"
-        style={{ width: '18rem' }}
+        style={{ width: '15rem' }}
       >
         <img src="images/logo-airbnb.png" className="card-img-top" alt="..." />
         <div className="card-body">
@@ -25,9 +46,12 @@ export default function Login() {
             <input name="password" type="password" />
             <button className="btn btn-success">Login</button>
           </form>
-          <span>
-            New to Airbnb <Link to="/signup">Sign Up</Link>
-          </span>
+          {login && <span className="text-danger">{errorMessage}</span>}
+          <div>
+            <span>
+              New to Airbnb <Link to="/signup">Sign Up</Link>
+            </span>
+          </div>
         </div>
       </div>
     </>
