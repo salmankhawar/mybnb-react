@@ -1,26 +1,32 @@
 import Nav from '../components/Nav'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
 
 export default function HouseCreate() {
-  let house = {
-    shortTitle: '',
-    description: '',
-    rooms: 0,
-    location: '',
-    price: 0,
-    photos: [],
-  }
+  const navigate = useNavigate()
 
-  function sendForm(e) {
+  async function sendForm(e) {
     e.preventDefault()
-    house = {
-      shortTitle: e.target.shortTitle.value,
+    let photos = Array.from(e.target.photos).map(e => e.value)
+    let house = {
+      title: e.target.title.value,
       description: e.target.description.value,
       rooms: e.target.rooms.value,
       location: e.target.location.value,
       price: e.target.price.value,
-      photos: e.target.photos,
-    }
+      photos: photos,
+    }  
+   
+    try {
+      let post = await axios.post ('http://localhost:4000/houses', house) 
+      console.log(post)
+      navigate(`/house/${post.data._id}`)
+    } catch (err) {
+      console.log(err)
+    } 
   }
+    
   return (
     <>
       <Nav />
@@ -30,7 +36,7 @@ export default function HouseCreate() {
             <h1>List a House</h1>
             <form onSubmit={(e) => sendForm(e)}>
               <label>Short Title</label>
-              <input name="shortTitle" type="text" className="form-control" />
+              <input name="title" type="text" className="form-control" />
               <label>Description</label>
               <textarea
                 name="description"
@@ -116,6 +122,6 @@ export default function HouseCreate() {
           </div>
         </div>
       </div>
-    </>
+    </> 
   )
 }
