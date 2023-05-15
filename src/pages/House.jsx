@@ -2,17 +2,16 @@ import Booking from '../components/Booking'
 import Nav from '../components/Nav'
 import Reviews from '../components/Reviews'
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 
 export default function House() {
   let {id} = useParams()
+  const [house, setHouse] = useState({})
   async function getHouse() {
-    let house = await axios.get (`http://localhost:4000/houses/${id}`)
-    console.log(house)
-    return house
-    
+    let houseData = await axios.get (`http://localhost:4000/houses/${id}`)
+    setHouse(houseData)
   }
   useEffect(() => {getHouse()}, [])
 

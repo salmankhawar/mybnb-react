@@ -20,7 +20,6 @@ export default function Login() {
       if (loginUser.email && loginUser.password) {
         let post = await axios.post('http://localhost:4000/login', loginUser)  
         post.data == e.target.email.value ? navigate('/') : setLogin(true) 
-        console.log(post.data)
         setError(post.data)
         
       } 
