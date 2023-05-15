@@ -54,7 +54,7 @@ export default function HouseCreate() {
                 className="form-control"
               >
                 <option value="Koh Phangan">Koh Phangan</option>
-                <option value="Koh Sumai">Koh Samui</option>
+                <option value="Koh Samui">Koh Samui</option>
                 <option value="Bali">Bali</option>
               </select>
               <label>Price per night</label>

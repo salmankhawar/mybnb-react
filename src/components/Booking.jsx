@@ -1,9 +1,9 @@
-export default function Booking() {
+export default function Booking({house}) {
   return (
     <div className="col">
       <div className="card" style={{ width: '18rem' }}>
         <div className="card-body">
-          <h5 className="card-title">$350/Night</h5>
+          <h5 className="card-title">${house.price}/Night</h5>
           <span className="card-text">0 Reviews</span>
           <form>
             <textarea

@@ -14,7 +14,9 @@ export default function Nav() {
     <div className="container">
       <div className="row row-cols-3">
         <div className="col text-left">
-          <img src="images/logo-airbnb.png" />
+          <img src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399114/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/logo-airbnb.png
+
+" />
         </div>
         <div className="col"></div>
         { login ?
