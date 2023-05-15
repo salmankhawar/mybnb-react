@@ -73,10 +73,10 @@ export default function House() {
                 className="form-select"
                 id="inputGroupSelect01"
                 name="sort"
-                defaultValue="low to high"
+                defaultValue="price"
               >
-                <option value="low to high">Price (low to high)</option>
-                <option value="high to low">Price (high to low)</option>
+                <option value="price">Price (low to high)</option>
+                <option value="-price">Price (high to low)</option>
               </select>
             </div>
             <div className="input-group mb-3 col">
