@@ -1,9 +1,17 @@
 import HouseThumbnail from '../components/HouseThumbnail'
 import Nav from '../components/Nav'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 export default function House() {
-  function sendForm(e) {
+  const [houses, setHouses] = useState([])
+  async function getHouses() {
+    let housesData = await axios.get('http://localhost:4000/houses')
+    setHouses(housesData.data)
+  }
+  useEffect(() => {getHouses()}, [])
+  
+  async function sendForm(e) {
     e.preventDefault()
     let form = {
       location: e.target.location.value,
@@ -12,8 +20,12 @@ export default function House() {
       sort: e.target.sort.value,
       name: e.target.name.value,
     }
+    let search = await axios.get('http://localhost:4000/houses', {params: form})
+    console.log(form) 
+    setHouses(search.data)
   }
-
+  
+   
   return (
     <>
       <Nav />
@@ -28,9 +40,9 @@ export default function House() {
                 className="form-select"
                 id="inputGroupSelect01"
                 name="location"
-                defaultValue="Any Location"
+                defaultValue=""
               >
-                <option value="Any Location">Any Location</option>
+                <option value="">Any Location</option>
                 <option value="Koh Phangan">Koh Phangan</option>
                 <option value="Koh Samui">Koh Samui</option>
                 <option value="Bali">Bali</option>
@@ -44,9 +56,9 @@ export default function House() {
                 className="form-select"
                 id="inputGroupSelect01"
                 name="rooms"
-                defaultValue="Any Rooms"
+                defaultValue=""
               >
-                <option value="Any Rooms">Any Rooms</option>
+                <option value="">Any Rooms</option>
                 <option value="1">1 Room</option>
                 <option value="2">2 Rooms</option>
                 <option value="3">3 Rooms</option>
@@ -93,7 +105,11 @@ export default function House() {
           </form>
         </div>
       </div>
-      <HouseThumbnail />
+      <div className="container">
+        <div className="row row-cols-4">
+          {houses.map((house, i) => <HouseThumbnail house={house} key={i} /> )}
+        </div>
+      </div>
     </>
   )
 }
