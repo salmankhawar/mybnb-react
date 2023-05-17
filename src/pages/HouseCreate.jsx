@@ -20,7 +20,6 @@ export default function HouseCreate() {
    
     try {
       let post = await axios.post ('http://localhost:4000/houses', house) 
-      console.log(post)
       navigate(`/house/${post.data._id}`)
     } catch (err) {
       console.log(err)

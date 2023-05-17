@@ -69,7 +69,7 @@ export default function House() {
               <p>
                 {house.description}
               </p>
-              <h5>0 Reviews</h5>
+              <h5>{house.reviews} Reviews</h5>
               <Reviews />
             </div>
             <Booking house={house} />

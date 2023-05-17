@@ -1,14 +1,31 @@
-export default function CreateReview() {
+import axios from 'axios'
+import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+
+
+export default function createReview() {
+  const [newRating, setRating] = useState(0)
+  let {id} = useParams()
+  
+  async function createReview(e) {
+    e.preventDefault() 
+    let review = {
+      house : id,
+      description: e.target.description.value,
+      rating : newRating 
+    }
+    await axios.post('http://localhost:4000/reviews', review)
+  }
   return (
-    <form>
+    <form onSubmit={(e) => createReview(e) }>
       <span>Leave a review</span>
-      <textarea rows={7} defaultValue={''} />
+      <textarea  name="description" rows={7} defaultValue={''} />
       <span>
-        <i
+        <i onClick={() => setRating(1)}
           className="fa-sharp fa-solid fa-thumbs-up"
           style={{ color: 'darkgreen' }}
         />
-        <i
+        <i onClick={() => setRating(-1)}
           className="fa-sharp fa-solid fa-thumbs-down"
           style={{ color: '#dc2909' }}
         />
