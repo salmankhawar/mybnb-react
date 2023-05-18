@@ -8,7 +8,6 @@ export default function Reviews() {
   let {id} = useParams()
   async function retrieveReviews() {
     let reviews = await axios.get('http://localhost:4000/reviews', {params: {house: id}})
-    console.log(reviews.data)
   }
   useEffect(() => {retrieveReviews()}, [])
   return (

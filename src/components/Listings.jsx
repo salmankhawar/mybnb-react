@@ -1,29 +1,22 @@
-import { Link } from 'react-router-dom'
-export default function Listings() {
-  let houses = [
-    {
-      image:
-        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
-      title: 'Luxury Villa in Chewang',
-      price: 350,
-      rooms: 4,
-      description:
-        'This is a wider card with supporting text below as natural lead in to additional content. This content is a little bit longer.',
-      updated: '3 mins',
-    },
-    {
-      image:
-        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295027/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2002/house_02_01.png',
-      title: 'Private Villa Lotus 1',
-      price: 150,
-      location: 'Koh Phangan',
-      rooms: 3,
-      reviews: 1,
-      score: -1,
-      description: 'we have nothing to say here',
-      updated: '30 mins',
-    },
-  ]
+import { Link, useParams } from 'react-router-dom'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+axios.defaults.withCredentials = true
+
+export default function Listings({userInfo}) {
+  const [user, setUser] = useState(userInfo)
+  const [houses, setHouses] = useState([])
+  async function getListings() {
+    if (userInfo) {
+      let housesData = await axios.get(`http://localhost:4000/houses?user=${user._id}`)
+      setHouses(housesData.data)
+    }
+  }
+  useEffect(() => {getListings()}, [user])
+  useEffect(() => {
+    setUser(userInfo)
+  })
+
   return (
     <div className="col cols-9">
       <h5>My Listings</h5>
@@ -31,13 +24,13 @@ export default function Listings() {
         <Link to="/housecreate">List a House</Link>
       </button>
       <div>
-        {houses.length > 0 ? (
+        {Array.isArray(houses) && houses.length > 0 ? (
           houses.map((element, i) => (
             <div key={i} className="card mb-3" style={{ maxWidth: 540 }}>
               <div className="row g-0">
                 <div className="col-md-4">
                   <img
-                    src={element.image}
+                    src={element.photos[0]}
                     className="img-fluid rounded-start"
                     alt="..."
                   />
@@ -51,7 +44,7 @@ export default function Listings() {
                     <p className="card-text">{element.description}</p>
                     <p className="card-text">
                       <small className="text-muted">
-                        Last updated {element.updated} ago
+                        Last updated {element.updated}
                       </small>
                     </p>
                     <button className="btn btn-outline-secondary">
@@ -66,7 +59,7 @@ export default function Listings() {
             </div>
           ))
         ) : (
-          <div class="card">
+          <div className="card">
             <span>You don't have any houses listed</span>
           </div>
         )}

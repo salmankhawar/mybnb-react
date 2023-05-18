@@ -21,7 +21,6 @@ export default function House() {
       name: e.target.name.value,
     }
     let search = await axios.get('http://localhost:4000/houses', {params: form})
-    console.log(form) 
     setHouses(search.data)
   }
   

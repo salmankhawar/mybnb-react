@@ -1,22 +1,27 @@
 import Nav from '../components/Nav'
 import Listings from '../components/Listings'
+import axios from 'axios'
+axios.defaults.withCredentials = true
+import { useEffect, useState } from 'react'
 
 export default function Profile() {
-  let user = {
-    name: '',
-    email: '',
-    avatar: '',
+  const [userInfo, setUser] = useState({})
+  async function getUser() {
+    let userData = await axios.get('http://localhost:4000/profile')
+    setUser(userData.data)
   }
 
-  function sendForm(e) {
+  async function sendForm(e) {
     e.preventDefault()
-    user = {
+    let user = {
       name: e.target.name.value,
       email: e.target.email.value,
       avatar: e.target.avatar.value,
     }
+    let editUserData = await axios.patch('http://localhost:4000/profile', user)
+    setUser(editUserData.data)
   }
-
+  useEffect(() => {getUser()}, [])
   return (
     <>
       <Nav />
@@ -26,16 +31,16 @@ export default function Profile() {
             <h5>Profile</h5>
             <form onSubmit={(e) => sendForm(e)}>
               <label>Name</label>
-              <input name="name" type="text" className="form-control" />
+              <input name="name" type="text" className="form-control" defaultValue={userInfo.name} />
               <label>Email</label>
-              <input name="email" type="email" className="form-control" />
+              <input name="email" type="email" className="form-control" defaultValue={userInfo.email} />
               <label>Profile Picture</label>
-              <img src="" />
-              <input name="avatar" type="text" className="form-control" />
+              <img src={userInfo.avatar} />
+              <input name="avatar" type="text" className="form-control" defaultValue={userInfo.avatar} />
               <button className="btn btn-success">Save Changes</button>
             </form>
           </div>
-          <Listings />
+          <Listings userInfo={userInfo} />
         </div>
       </div>
     </>

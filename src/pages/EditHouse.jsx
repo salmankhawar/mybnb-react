@@ -22,7 +22,7 @@ export default function EditHouse() {
               <label>Location</label>
               <select className="form-control">
                 <option>Koh Phangan</option>
-                <option selected="">Koh Samui</option>
+                <option defaultValue="">Koh Samui</option>
                 <option>Bali</option>
               </select>
               <label>Price per night</label>
