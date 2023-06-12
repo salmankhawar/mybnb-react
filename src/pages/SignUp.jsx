@@ -30,7 +30,7 @@ export default function SignUp() {
         className="card position-absolute top-50 start-50 translate-middle"
         style={{ width: '15rem' }}
       >
-        <img src="images/logo-airbnb.png" className="card-img-top" alt="..." />
+        <img src="images/logo-mybnb.png" className="card-img-top" alt="..." />
         <div className="card-body">
           <form onSubmit={(e) => sendForm(e)}>
             <label>Your Full Name</label>
