@@ -4,6 +4,7 @@ import Reviews from '../components/Reviews'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+const API_URL = process.env.REACT_APP_API_URL
 
 
 export default function House() {
@@ -11,7 +12,7 @@ export default function House() {
   const [house, setHouse] = useState({})
   const [clickedImage, setImage] = useState('')
   async function getHouse() {
-    let houseData = await axios.get (`http://localhost:4000/houses/${id}`)
+    let houseData = await axios.get (`${API_URL}/houses/${id}`)
     setHouse(houseData.data)
     setImage(houseData.data.photos[0])
   }
@@ -70,9 +71,9 @@ export default function House() {
                 {house.description}
               </p>
               <h5>{house.reviews} Reviews</h5>
-              <Reviews />
+              <Reviews API_URL={API_URL} />
             </div>
-            <Booking house={house} />
+            <Booking house={house} API_URL={API_URL} />
           </div>
         </div>
       </div>

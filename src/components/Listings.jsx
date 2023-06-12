@@ -3,12 +3,12 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 axios.defaults.withCredentials = true
 
-export default function Listings({userInfo}) {
+export default function Listings({userInfo, API_URL}) {
   const [user, setUser] = useState(userInfo)
   const [houses, setHouses] = useState([])
   async function getListings() {
     if (userInfo) {
-      let housesData = await axios.get(`http://localhost:4000/houses?user=${user._id}`)
+      let housesData = await axios.get(`${API_URL}/houses?user=${user._id}`)
       setHouses(housesData.data)
     }
   }

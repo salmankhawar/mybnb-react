@@ -2,22 +2,21 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 axios.defaults.withCredentials = true
 import { useState, useEffect } from 'react'
-
+const API_URL = process.env.REACT_APP_API_URL
 
 export default function Nav() {
   const [login, setLogin] = useState()
   const [user, setUser] = useState({})
   async function getUser() {
-    let userData = await axios.get('http://localhost:4000/profile')
+    let userData = await axios.get(`${API_URL}/profile`)
     if (userData.data._id) { 
       setUser(userData.data) 
       setLogin(true) 
     } else { 
       setLogin(false)}
-    console.log(userData.data._id)
   }
   async function logOut() {
-    let logout = await axios.get('http://localhost:4000/logout')
+    let logout = await axios.get(`${API_URL}/logout`)
     setLogin(false)
   }
   useEffect(() => {getUser()}, [])
@@ -27,7 +26,7 @@ export default function Nav() {
     <div className="container">
       <div className="row row-cols-3">
         <div className="col text-left">
-          <img src="images/logo-mybnb.png" />
+          <img src="/images/logo-mybnb.png" />
         </div>
         <div className="col"></div>
         { login ?

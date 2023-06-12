@@ -2,6 +2,7 @@ import axios from 'axios'
 axios.defaults.withCredentials = true
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+const API_URL = process.env.REACT_APP_API_URL
 
 
 export default function SignUp() {
@@ -11,7 +12,7 @@ export default function SignUp() {
     
     e.preventDefault()
     try {
-      let post = await axios.post('http://localhost:4000/signup', {
+      let post = await axios.post(`${API_URL}/signup`, {
         name: e.target.name.value,
         avatar: e.target.avatar.value,
         email: e.target.email.value,
@@ -30,7 +31,7 @@ export default function SignUp() {
         className="card position-absolute top-50 start-50 translate-middle"
         style={{ width: '15rem' }}
       >
-        <img src="images/logo-mybnb.png" className="card-img-top" alt="..." />
+        <img src="/images/logo-mybnb.png" className="card-img-top" alt="..." />
         <div className="card-body">
           <form onSubmit={(e) => sendForm(e)}>
             <label>Your Full Name</label>

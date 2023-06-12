@@ -3,11 +3,12 @@ import Listings from '../components/Listings'
 import axios from 'axios'
 axios.defaults.withCredentials = true
 import { useEffect, useState } from 'react'
+const API_URL = process.env.REACT_APP_API_URL
 
 export default function Profile() {
   const [userInfo, setUser] = useState({})
   async function getUser() {
-    let userData = await axios.get('http://localhost:4000/profile')
+    let userData = await axios.get(`${API_URL}/profile`)
     setUser(userData.data)
   }
 
@@ -18,7 +19,7 @@ export default function Profile() {
       email: e.target.email.value,
       avatar: e.target.avatar.value,
     }
-    let editUserData = await axios.patch('http://localhost:4000/profile', user)
+    let editUserData = await axios.patch(`${API_URL}/profile`, user)
     setUser(editUserData.data)
   }
   useEffect(() => {getUser()}, [])
@@ -40,7 +41,7 @@ export default function Profile() {
               <button className="btn btn-success">Save Changes</button>
             </form>
           </div>
-          <Listings userInfo={userInfo} />
+          <Listings userInfo={userInfo} API_URL={API_URL} />
         </div>
       </div>
     </>

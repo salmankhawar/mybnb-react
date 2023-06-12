@@ -1,7 +1,7 @@
 import Nav from '../components/Nav'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+const API_URL = process.env.REACT_APP_API_URL
 
 export default function HouseCreate() {
   const navigate = useNavigate()
@@ -19,7 +19,7 @@ export default function HouseCreate() {
     }  
    
     try {
-      let post = await axios.post ('http://localhost:4000/houses', house) 
+      let post = await axios.post (`${API_URL}/houses`, house) 
       navigate(`/house/${post.data._id}`)
     } catch (err) {
       console.log(err)

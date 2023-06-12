@@ -2,11 +2,12 @@ import HouseThumbnail from '../components/HouseThumbnail'
 import Nav from '../components/Nav'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+const API_URL = process.env.REACT_APP_API_URL
 
 export default function House() {
   const [houses, setHouses] = useState([])
   async function getHouses() {
-    let housesData = await axios.get('http://localhost:4000/houses')
+    let housesData = await axios.get(`${API_URL}/houses`)
     setHouses(housesData.data)
   }
   useEffect(() => {getHouses()}, [])
@@ -20,7 +21,7 @@ export default function House() {
       sort: e.target.sort.value,
       name: e.target.name.value,
     }
-    let search = await axios.get('http://localhost:4000/houses', {params: form})
+    let search = await axios.get(`${API_URL}/houses`, {params: form})
     setHouses(search.data)
   }
   

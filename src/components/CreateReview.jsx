@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 
-export default function createReview() {
+
+export default function createReview({API_URL}) {
   const [newRating, setRating] = useState(0)
   let {id} = useParams()
   
@@ -14,7 +15,7 @@ export default function createReview() {
       description: e.target.description.value,
       rating : newRating 
     }
-    await axios.post('http://localhost:4000/reviews', review)
+    await axios.post(`${API_URL}/reviews`, review)
   }
   return (
     <form onSubmit={(e) => createReview(e) }>

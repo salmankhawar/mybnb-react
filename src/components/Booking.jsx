@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+const API_URL = process.env.REACT_APP_API_URL
 
 
-export default function Booking({house}) {
+export default function Booking({house, API_URL}) {
   const [booked, setBooked] = useState(false)
   let {id} = useParams()
   async function createBooking(e) {
@@ -12,12 +13,12 @@ export default function Booking({house}) {
       description: e.target.description.value,
       house: id
     }
-    let post = await axios.post('http://localhost:4000/bookings', booking)
+    let post = await axios.post(`${API_URL}/bookings`, booking)
     setBooked(true)
   }
 
   async function retrieveBooking() {
-    let newBooking = await axios.get('http://localhost:4000/bookings', {params: {house: id}})
+    let newBooking = await axios.get(`${API_URL}/bookings`, {params: {house: id}})
     newBooking.data._id ? setBooked(true) : null
   }
   useEffect(() => {retrieveBooking()}, [])

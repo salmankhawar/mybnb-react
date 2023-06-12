@@ -4,10 +4,10 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-export default function Reviews() {
+export default function Reviews({API_URL}) {
   let {id} = useParams()
   async function retrieveReviews() {
-    let reviews = await axios.get('http://localhost:4000/reviews', {params: {house: id}})
+    let reviews = await axios.get(`${API_URL}/reviews`, {params: {house: id}})
   }
   useEffect(() => {retrieveReviews()}, [])
   return (

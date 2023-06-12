@@ -2,6 +2,7 @@ import  axios  from 'axios'
 axios.defaults.withCredentials = true
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+const API_URL = process.env.REACT_APP_API_URL
 
 
 
@@ -18,7 +19,7 @@ export default function Login() {
     }
     try {
       if (loginUser.email && loginUser.password) {
-        let post = await axios.post('http://localhost:4000/login', loginUser)  
+        let post = await axios.post(`${API_URL}/login`, loginUser)  
         post.data == e.target.email.value ? navigate('/') : setLogin(true) 
         setError(post.data)
         
@@ -30,7 +31,7 @@ export default function Login() {
   }
   return (
     <>
-      <img src="images/thailand.jpg" className="img-fluid" alt="..." />
+      <img src="/images/thailand.jpg" className="img-fluid" alt="..." />
       <div className="" />
       <div
         className="card position-absolute top-50 start-50 translate-middle"
