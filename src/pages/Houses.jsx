@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true
 
 const API_URL = process.env.REACT_APP_API_URL
 
-export default function House() {
+export default function Houses() {
   const [houses, setHouses] = useState([])
   async function getHouses() {
     let housesData = await axios.get(`${API_URL}/houses`)
