@@ -9,7 +9,7 @@ import Houses from './pages/Houses'
 import EditHouse from './pages/EditHouse'
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-axios.defaults.withCredentials = true
+
 
 function App() {
   return (
