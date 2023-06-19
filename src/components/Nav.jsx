@@ -27,6 +27,7 @@ export default function Nav() {
       <div className="row row-cols-3">
         <div className="col text-left">
           <img src="/images/logo-mybnb.png" />
+          <Link to="/"></Link>
         </div>
         <div className="col"></div>
         { login ?
