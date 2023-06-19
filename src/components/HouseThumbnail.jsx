@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 export default function HouseThumbnail({house, i}) {
-  
   return (
     
     <div className="col" key={i}>
@@ -14,13 +13,13 @@ export default function HouseThumbnail({house, i}) {
             </span>
             <h5 className="card-title">{house.title}</h5>
             <span className="card-text">
-              {house.score == 1 && (
+              {house.rating == 1 && (
                 <i
                   className="fa-sharp fa-solid fa-thumbs-up"
                   style={{ color: 'darkgreen' }}
                 />
               )}{' '}
-              {house.score == -1 && (
+              {house.rating == -1 && (
                 <i
                   className="fa-sharp fa-solid fa-thumbs-down"
                   style={{ color: '#dc2909' }}

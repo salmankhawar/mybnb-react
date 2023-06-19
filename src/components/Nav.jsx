@@ -32,16 +32,18 @@ export default function Nav() {
         <div className="col"></div>
         { login ?
           <div className="col text-right">
-            <button  className="btn btn-outline-dark">
-              <Link to="/profile">{user.name}</Link>
-            </button>
+            <Link to="/profile">
+              <button  className="btn btn-outline-dark">
+                {user.name}
+              </button>
+            </Link>
             <button type='button' onClick ={logOut} className="btn btn-outline-dark">
             Logout
             </button>
           </div> :
           <div className="col text-right">
-            <button  className="btn btn-outline-dark"><Link to="/login">Login</Link></button>
-            <button  className="btn btn-outline-dark"><Link to="/signup">Sign Up</Link></button>
+            <Link to="/login"><button  className="btn btn-outline-dark">Login</button></Link>
+            <Link to="/signup"><button  className="btn btn-outline-dark">Sign Up</button></Link>
           </div>}
       </div>
     </div>

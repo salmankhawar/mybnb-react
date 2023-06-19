@@ -5,15 +5,18 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 export default function Reviews({API_URL}) {
+  const [reviewData, setReview] = useState([])
   let {id} = useParams()
   async function retrieveReviews() {
     let reviews = await axios.get(`${API_URL}/reviews`, {params: {house: id}})
+    reviews ? setReview(reviews.data) : null 
+    
   }
   useEffect(() => {retrieveReviews()}, [])
   return (
     <>
-      <Review  />
-      <CreateReview />
+      {reviewData.map((review,i) => <Review review={review} key={i} />)}
+      <CreateReview API_URL={API_URL} />
     </>
   )
 }

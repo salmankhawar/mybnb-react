@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom'
 export default function createReview({API_URL}) {
   const [newRating, setRating] = useState(0)
   let {id} = useParams()
-  
   async function createReview(e) {
     e.preventDefault() 
     let review = {
@@ -15,7 +14,7 @@ export default function createReview({API_URL}) {
       description: e.target.description.value,
       rating : newRating 
     }
-    await axios.post(`${API_URL}/reviews`, review)
+    let post = await axios.post(`${API_URL}/reviews`, review)
   }
   return (
     <form onSubmit={(e) => createReview(e) }>
