@@ -1,7 +1,7 @@
 import CreateReview from './CreateReview'
 import Review from './Review'
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 export default function Reviews({API_URL}) {
@@ -12,7 +12,7 @@ export default function Reviews({API_URL}) {
   useEffect(() => {retrieveReviews()}, [])
   return (
     <>
-      <Review />
+      <Review  />
       <CreateReview />
     </>
   )

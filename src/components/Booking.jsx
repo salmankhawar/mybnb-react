@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-const API_URL = process.env.REACT_APP_API_URL
+
 
 
 export default function Booking({house, API_URL}) {

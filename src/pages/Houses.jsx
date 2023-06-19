@@ -2,6 +2,8 @@ import HouseThumbnail from '../components/HouseThumbnail'
 import Nav from '../components/Nav'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+axios.defaults.withCredentials = true
+
 const API_URL = process.env.REACT_APP_API_URL
 
 export default function House() {
