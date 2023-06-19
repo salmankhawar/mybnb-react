@@ -5,15 +5,16 @@ export default function HouseThumbnail({house, i}) {
     
     <div className="col" key={i}>
       <div className="card">
+      <Link to={`/house/${house._id}`}>
         <img src={house.photos[0]} className="card-img-top" alt="..." />
         <div className="card-body">
           <span className="card-text">
             <i className="fa-sharp fa-solid fa-location-dot" />
             {house.location} - {house.rooms} Rooms
           </span>
-          <Link to={`/house/${house._id}`}>
+          
             <h5 className="card-title">{house.title}</h5>
-          </Link>
+          
 
           <span className="card-text">
             {house.score == 1 && (
@@ -32,6 +33,7 @@ export default function HouseThumbnail({house, i}) {
           </span>
           <span className="card-text">${house.price}/night</span>
         </div>
+        </Link>
       </div>
     </div>
      
