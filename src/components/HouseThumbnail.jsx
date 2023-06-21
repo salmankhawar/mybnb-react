@@ -4,7 +4,8 @@ export default function HouseThumbnail({house, i}) {
     
     <div className="col" key={i}>
       <div className="card">
-        <Link to={`/house/${house._id}`}>
+        <Link to={`/house/${house._id}`}
+          className="text-decoration-none text-black">
           <img src={house.photos[0]} className="card-img-top" alt="..." />
           <div className="card-body">
             <span className="card-text">
