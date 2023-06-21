@@ -20,9 +20,11 @@ export default function Listings({userInfo, API_URL}) {
   return (
     <div className="col cols-9">
       <h5>My Listings</h5>
-      <button className="btn btn-success">
-        <Link to="/housecreate">List a House</Link>
-      </button>
+      <Link to="/housecreate">
+        <button className="btn btn-success">
+        List a House
+        </button>
+      </Link>
       <div>
         {Array.isArray(houses) && houses.length > 0 ? (
           houses.map((element, i) => (
