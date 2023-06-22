@@ -8,9 +8,10 @@ const API_URL = process.env.REACT_APP_API_URL
 
 export default function Houses() {
   const [houses, setHouses] = useState([])
+  const [filter, setFilter] = useState([])
   async function getHouses() {
     let housesData = await axios.get(`${API_URL}/houses`)
-    setHouses(housesData.data)
+    setHouses(housesData.data), setFilter(housesData.data)
   }
   useEffect(() => {getHouses()}, [])
   
@@ -45,9 +46,7 @@ export default function Houses() {
                 defaultValue=""
               >
                 <option value="">Any Location</option>
-                <option value="Koh Phangan">Koh Phangan</option>
-                <option value="Koh Samui">Koh Samui</option>
-                <option value="Bali">Bali</option>
+                {filter.map((house, i) => <option value={house.location} key={i}>{house.location}</option>)}
               </select>
             </div>
             <div className="input-group mb-3 col">
@@ -61,11 +60,7 @@ export default function Houses() {
                 defaultValue=""
               >
                 <option value="">Any Rooms</option>
-                <option value="1">1 Room</option>
-                <option value="2">2 Rooms</option>
-                <option value="3">3 Rooms</option>
-                <option value="4">4 Rooms</option>
-                <option value="5">5 Rooms</option>
+                {filter.map((house, i) => <option value={house.rooms} key={i}>{house.rooms} Rooms</option>)}  
               </select>
             </div>
             <div className="input-group mb-3 col">
