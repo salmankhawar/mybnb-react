@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 export default function HouseThumbnail({house, i}) {
   return (
     
-    <div className="col" key={i}>
+    <div className="col-sm" key={i}>
       <div className="card">
         <Link to={`/house/${house._id}`}
           className="text-decoration-none text-black">
